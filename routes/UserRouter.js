@@ -1,5 +1,4 @@
 const express = require("express");
-const User = require("../db/userModel");
 const router = express.Router();
 
 const {
@@ -9,14 +8,5 @@ const {
 
 router.get("/list", getUserList);
 router.get("/:id", getUserById);
-
-
-// router.post("/", async (request, response) => {
-
-// });
-
-// router.get("/", async (request, response) => {
-
-// });
 
 module.exports = router;

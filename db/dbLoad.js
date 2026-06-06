@@ -21,11 +21,22 @@ async function dbLoad() {
   await Photo.deleteMany({});
   await SchemaInfo.deleteMany({});
 
+  const loginNames = {
+    Ian: "ian",
+    Ellen: "ellen",
+    Peregrin: "pippin",
+    Rey: "rey",
+    April: "april",
+    John: "john",
+  };
+
   const userModels = models.userListModel();
   const mapFakeId2RealId = {};
   for (const user of userModels) {
     userObj = new User({
-      first: user.first_name,
+      login_name: loginNames[user.first_name] || user.first_name.toLowerCase(),
+      password: "weak",
+      first_name: user.first_name,
       last_name: user.last_name,
       location: user.location,
       description: user.description,
